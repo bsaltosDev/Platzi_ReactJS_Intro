@@ -12,16 +12,16 @@ const todos = [
 function App() {
   return (
     <React.Fragment>
-      <TodoCounter />
+      {/*<TodoCounter />*/}
       <h2>Has completado 2 de 3 TODOS</h2>
-      <TodoSearch />
+      {/*<TodoSearch />*/}
       <input placeholder='Cebolla'/>
-      <TodoList>
+      {/*<TodoList>*/}
         {todos.map(todo => (
-          <TodoItem />
+          {/*<TodoItem />*/}
         ))}
-      </TodoList>
-      <CreateTodoButton />
+      {/*</TodoList>*/}
+      {/*<CreateTodoButton />*/}
     </React.Fragment>
   );
 }
