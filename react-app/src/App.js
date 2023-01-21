@@ -2,6 +2,7 @@
 //import './App.css';
 
 import React from "react";
+import { TodoCounter } from "./TodoCounter"; 
 
 const todos = [
   {text: 'Cortar Cebolla', completed: false},
@@ -12,8 +13,7 @@ const todos = [
 function App() {
   return (
     <React.Fragment>
-      {/*<TodoCounter />*/}
-      <h2>Has completado 2 de 3 TODOS</h2>
+      <TodoCounter />
       {/*<TodoSearch />*/}
       <input placeholder='Cebolla'/>
       {/*<TodoList>
