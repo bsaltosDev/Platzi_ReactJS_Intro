@@ -1,6 +1,8 @@
 //import logo from './logo.svg';
 //import './App.css';
 
+import React from "react";
+
 const todos = [
   {text: 'Cortar Cebolla', completed: false},
   {text: 'Tomar curso intro react', completed: false},
@@ -9,7 +11,7 @@ const todos = [
 
 function App() {
   return (
-    <div className="App">
+    <React.Fragment>
       <TodoCounter />
       <h2>Has completado 2 de 3 TODOS</h2>
       <TodoSearch />
@@ -20,7 +22,7 @@ function App() {
         ))}
       </TodoList>
       <CreateTodoButton />
-    </div>
+    </React.Fragment>
   );
 }
 
