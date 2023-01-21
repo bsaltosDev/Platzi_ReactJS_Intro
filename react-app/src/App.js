@@ -16,12 +16,13 @@ function App() {
       <h2>Has completado 2 de 3 TODOS</h2>
       {/*<TodoSearch />*/}
       <input placeholder='Cebolla'/>
-      {/*<TodoList>*/}
+      {/*<TodoList>
         {todos.map(todo => (
-          {/*<TodoItem />*/}
+          <TodoItem />
         ))}
-      {/*</TodoList>*/}
+      /*</TodoList>*/}
       {/*<CreateTodoButton />*/}
+      <button>+</button>
     </React.Fragment>
   );
 }
