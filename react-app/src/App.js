@@ -9,7 +9,7 @@ import { TodoItem } from "./TodoItem.js";
 import { CreateTodoButton } from "./CreateTodoButton.js";
 
 const todos = [
-  {text: 'Cortar Cebolla', completed: false},
+  {text: 'Cortar Cebolla', completed: true},
   {text: 'Tomar curso intro react', completed: false},
   {text: 'Llorar con la llorona', completed: false}
 ]
