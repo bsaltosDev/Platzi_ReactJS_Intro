@@ -9,7 +9,7 @@ function CreateTodoButton(){
     return(
         <button 
             className="CreateTodoButton"
-            onClick={onClickButton("TODO: Abrir modal")}
+            onClick={() => onClickButton("TODO: Abrir modal")}
         >
             +
         </button>
