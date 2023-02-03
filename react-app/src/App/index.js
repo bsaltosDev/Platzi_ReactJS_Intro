@@ -2,11 +2,11 @@
 //import './App.css';
 
 import React from "react";
-import { TodoCounter } from "./TodoCounter"; 
-import { TodoSearch } from "./TodoSearch.js";
-import { TodoList } from "./TodoList.js";
-import { TodoItem } from "./TodoItem.js";
-import { CreateTodoButton } from "./CreateTodoButton.js";
+import { TodoCounter } from "../TodoCounter/index.js"; 
+import { TodoSearch } from "../TodoSearch/index.js";
+import { TodoList } from "../TodoList/index.js";
+import { TodoItem } from "../TodoItem/index.js";
+import { CreateTodoButton } from "../CreateTodoButton/index.js";
 
 const defaultTodos = [
   {text: 'Lista compras', completed: true},
