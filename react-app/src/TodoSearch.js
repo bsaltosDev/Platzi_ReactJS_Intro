@@ -17,8 +17,7 @@ class Componente  extends React.Component {
     }
 }*/
 
-function TodoSearch(){
-    const [searchValue, setSearchValue] = React.useState('');//hooks de React empiezan por use en vez de Clases para manejar estado
+function TodoSearch({ searchValue, setSearchValue}){
 
     /*
     el useState devuelve un array:
@@ -32,14 +31,13 @@ function TodoSearch(){
         setSearchValue(event.target.value);
     };
     
-    return[
+    return (
         <input 
             className="TodoSearch" 
             placeholder="Cebolla" 
             value={searchValue} //valor de input igual a estado por req de react
             onChange={onSearchValueChange}
-        />,
-        <p>{searchValue}</p>
-    ];
+        />
+    );
 }
 export {TodoSearch};

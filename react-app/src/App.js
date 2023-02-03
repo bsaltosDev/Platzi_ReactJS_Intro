@@ -15,10 +15,17 @@ const todos = [
 ]
 
 function App() {
+  /* El estado debe estar cerca de los componentes, evitar
+     rerenderizado q afecta el perfornmace de la app */
+  const [searchValue, setSearchValue] = React.useState('');//hooks de React empiezan por use en vez de Clases para manejar estado
+
   return (
     <React.Fragment>
       <TodoCounter />
-      <TodoSearch />
+      <TodoSearch
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
       <TodoList>
         {todos.map(todo => (
           <TodoItem 
