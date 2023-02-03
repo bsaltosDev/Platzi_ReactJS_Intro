@@ -33,7 +33,7 @@ function App() {
     });
   }
 
-  const completeTodos = (text) => {
+  const completeTodo = (text) => {
     const todoIndex = todos.findIndex(todo => todo.text == text);
     
     // cambio de estado de React
@@ -58,7 +58,7 @@ function App() {
             key={todo.text} 
             text={todo.text}
             completed={todo.completed}
-            onComplete={() => completeTodos(todo.text)}
+            onComplete={() => completeTodo(todo.text)}
           />
         ))}
       </TodoList>
