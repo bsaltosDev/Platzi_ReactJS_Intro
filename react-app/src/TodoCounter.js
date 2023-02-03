@@ -10,9 +10,10 @@ const styles = {
 <h2 style={styles}>
 */
 
-function TodoCounter(){
+function TodoCounter({total, completed}){
+
     return(
-        <h2 className="TodoCounter"> Has completado 2 de 3 ToDos</h2>
+        <h2 className="TodoCounter"> Has completado {completed} de {total} ToDos</h2>
     )
 }
 
