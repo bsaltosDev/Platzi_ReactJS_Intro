@@ -1,5 +1,7 @@
 import React from "react";
 import './TodoSearch.css';
+import { TodoContext } from "../TodoContext";
+
 /*
 Antiguo manejo de estado por clases en react
 uso de constructor y método state y setState
@@ -17,8 +19,8 @@ class Componente  extends React.Component {
     }
 }*/
 
-function TodoSearch({ searchValue, setSearchValue}){
-
+function TodoSearch(){
+    const { searchValue, setSearchValue} = React.useContext(TodoContext);
     /*
     el useState devuelve un array:
     posición 0 valor
