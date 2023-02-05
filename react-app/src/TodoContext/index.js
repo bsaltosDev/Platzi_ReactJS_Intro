@@ -15,6 +15,8 @@ function TodoProvider(props) {
     /* El estado debe estar cerca de los componentes, evitar
         rerenderizado q afecta el perfornmace de la app */
     const [searchValue, setSearchValue] = React.useState('');//hooks de React empiezan por use en vez de Clases para manejar estado
+    //estado para modal
+    const [openModal, setOpenModal] = React.useState(false);
     const completedTodos = todos.filter(todo => todo.completed == true).length;
     const totalTodos = todos.length;
 
@@ -60,6 +62,8 @@ function TodoProvider(props) {
             searchedTodos,
             completeTodo,
             deleteTodo,
+            openModal,
+            setOpenModal,
         }}>
             {props.children}
         </TodoContext.Provider>
