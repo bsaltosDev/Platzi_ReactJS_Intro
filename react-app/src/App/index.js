@@ -75,6 +75,18 @@ function App() {
     saveTodos(newTodos);
   };
 
+
+  /*use efect
+    sin parametro se refresca cada vez
+    con [] se refresca solo la primera vez
+    con cambio de estado ejemplo totalTodos para refrescar
+  */
+  console.log('antes use efect');
+  React.useEffect(() => { 
+    console.log('use efect');
+  }, [totalTodos]);
+  console.log('despues use efect');
+
   return (
     <AppUI 
       totalTodos={totalTodos}
