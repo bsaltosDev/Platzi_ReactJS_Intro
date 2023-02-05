@@ -9,21 +9,38 @@ import { AppUI } from "./AppUI";
   {text: 'Pago Facturas servicios', completed: true}
 ]*/
 
-function App() {
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
-  let parsedTodos;
+function useLocalStorage(itemName) {
+  const localStorageItem = localStorage.getItem(itemName);
+  let parsedItem;
 
-  if (!localStorageTodos){
-    localStorage.setItem('TODOS_V1', JSON.stringify([]));
-    parsedTodos = [];
+  if (!localStorageItem){
+    localStorage.setItem(itemName, JSON.stringify([]));
+    parsedItem = [];
   } else {
-    parsedTodos = JSON.parse(localStorageTodos);
+    parsedItem = JSON.parse(localStorageItem);
   }
+
+  const [item, setItem] = React.useState(parsedItem);
+
+  const saveItem = (newItem) => {
+    const stringifiedItem = JSON.stringify(newItem);
+    localStorage.setItem(itemName, stringifiedItem);
+    setItem(newItem);
+  };
+
+  return [
+    item,
+    saveItem,
+  ];
+}
+
+function App() {
+  //call custom hook
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
 
   /* El estado debe estar cerca de los componentes, evitar
      rerenderizado q afecta el perfornmace de la app */
   const [searchValue, setSearchValue] = React.useState('');//hooks de React empiezan por use en vez de Clases para manejar estado
-  const [todos, setTodos] = React.useState(parsedTodos);
   const completedTodos = todos.filter(todo => todo.completed == true).length;
   const totalTodos = todos.length;
 
@@ -37,12 +54,6 @@ function App() {
       return todoText.includes(searchText);
     });
   }
-
-  const saveTodos = (newTodos) => {
-    const stringifiedTodos = JSON.stringify(newTodos);
-    localStorage.setItem('TODOS_V1', stringifiedTodos);
-    setTodos(newTodos);
-  };
 
   const completeTodo = (text) => {
     const todoIndex = todos.findIndex(todo => todo.text == text);
