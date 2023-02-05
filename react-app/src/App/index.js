@@ -9,34 +9,52 @@ import { AppUI } from "./AppUI";
   {text: 'Pago Facturas servicios', completed: true}
 ]*/
 
-function useLocalStorage(itemName) {
-  const localStorageItem = localStorage.getItem(itemName);
-  let parsedItem;
+function useLocalStorage(itemName, initialValue) {  
+  const [loading, setLoading] = React.useState(true);
+  
+  const [item, setItem] = React.useState(initialValue);
 
-  if (!localStorageItem){
-    localStorage.setItem(itemName, JSON.stringify([]));
-    parsedItem = [];
-  } else {
-    parsedItem = JSON.parse(localStorageItem);
-  }
+  React.useEffect(() => {
+    setTimeout(() => {
+      const localStorageItem = localStorage.getItem(itemName);
+      let parsedItem;
 
-  const [item, setItem] = React.useState(parsedItem);
+      if (!localStorageItem){
+        localStorage.setItem(itemName, JSON.stringify([]));
+        parsedItem = [];
+      } else {
+        parsedItem = JSON.parse(localStorageItem);
+      }
 
+      setItem(parsedItem);
+      setLoading(false);
+    }, 2000);
+  })
+  
   const saveItem = (newItem) => {
     const stringifiedItem = JSON.stringify(newItem);
     localStorage.setItem(itemName, stringifiedItem);
     setItem(newItem);
   };
 
-  return [
+  /*
+    cuando un hook de react devuelve varios objetos para el array
+    se devuelve un objeto ya no un array.
+  */
+  return {
     item,
     saveItem,
-  ];
+    loading,
+  };
 }
 
 function App() {
   //call custom hook
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  const {
+    item: todos, //renombrado por uso de objetos de react hook custom
+    saveItem:saveTodos, 
+    loading
+  } = useLocalStorage('TODOS_V1', []);
 
   /* El estado debe estar cerca de los componentes, evitar
      rerenderizado q afecta el perfornmace de la app */
@@ -75,20 +93,9 @@ function App() {
     saveTodos(newTodos);
   };
 
-
-  /*use efect
-    sin parametro se refresca cada vez
-    con [] se refresca solo la primera vez
-    con cambio de estado ejemplo totalTodos para refrescar
-  */
-  console.log('antes use efect');
-  React.useEffect(() => { 
-    console.log('use efect');
-  }, [totalTodos]);
-  console.log('despues use efect');
-
   return (
-    <AppUI 
+    <AppUI
+      loading={loading} 
       totalTodos={totalTodos}
       completedTodos={completedTodos}
       searchValue={searchValue}
