@@ -34,7 +34,7 @@ function TodoSearch({ searchValue, setSearchValue}){
     return (
         <input 
             className="TodoSearch" 
-            placeholder="Cebolla" 
+            placeholder="Buscar ToDos" 
             value={searchValue} //valor de input igual a estado por req de react
             onChange={onSearchValueChange}
         />
